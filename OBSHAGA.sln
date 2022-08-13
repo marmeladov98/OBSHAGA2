@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OBSHAGA", "OBSHAGA.csproj", "{520FAFEA-1985-4421-B1EB-E99F2C11B7A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		RUN-Game|Any CPU = RUN-Game|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{520FAFEA-1985-4421-B1EB-E99F2C11B7A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{520FAFEA-1985-4421-B1EB-E99F2C11B7A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{520FAFEA-1985-4421-B1EB-E99F2C11B7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{520FAFEA-1985-4421-B1EB-E99F2C11B7A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{520FAFEA-1985-4421-B1EB-E99F2C11B7A9}.RUN-Game|Any CPU.ActiveCfg = Release|Any CPU
+		{520FAFEA-1985-4421-B1EB-E99F2C11B7A9}.RUN-Game|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32D98D45-BD36-4061-8378-DCE273E07BE2}
+	EndGlobalSection
+EndGlobal
