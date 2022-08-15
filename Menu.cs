@@ -12,11 +12,13 @@ namespace OBSHAGA
         private List<string> Options; //Строка с выбором нужного пункта
         private string Prompt; //Строка Меню
         private int Health; // Кол-во HP
+        private int Sigi;
 
-        public Menu(string prompt, List<string> options, int health)
+        public Menu(string prompt, List<string> options, int health, int sigi)
         {
             Prompt = prompt;
             Health = health;
+            Sigi = sigi;
             Options = options;
             SelectedIndex = 0;
 
@@ -31,8 +33,9 @@ namespace OBSHAGA
                 if (Health >= 50) Console.ForegroundColor = ConsoleColor.Green;
                 else if (Health < 50 && Health >= 30) Console.ForegroundColor = ConsoleColor.Yellow;
                 else if (Health < 30) Console.ForegroundColor = ConsoleColor.Red;
-                Console.Write(Health + "\n\n");
+                Console.Write(Health);
                 Console.ResetColor();
+                Console.Write(" | Сигарет: " + Sigi + "\n\n");
                 Console.Write(Prompt + "\n\n");
             }
 

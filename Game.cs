@@ -78,6 +78,10 @@ namespace OBSHAGA
             PrintText("Именно поэтому, нужно покинуть общежитие как можно быстрее и не попасться администрации.");
             PrintText("Твои размышления прерывает какой-то потрепанный парень своими яростными криками с соседней кровати.");
             PrintText("Оторвавшись от размышлений ты слышишь, что он в грубой форме требует выключить будильник!");
+            	
+            Console.WriteLine("Здоровье: {0, 10} | Сигарет: {1, 5} | Код: {2}", health.ToString(), sigi, code);
+
+
             Console.ReadLine();
             AlarmClock();
         }
@@ -87,7 +91,7 @@ namespace OBSHAGA
             RoomNumber = 1;
             string prompt = "Доступные действия:\n";
             List<string> options = new List<string>() { "Выключить будильник", "Послать соседа нахуй", "Затупить" };
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
             Console.Clear();
             switch (selectedIndex)
@@ -167,7 +171,7 @@ namespace OBSHAGA
             string prompt = "Доступные действия:\n";
             List<string> options = new List<string>() { "Обнять девушку и продолжить спать", "Одеться и найти способ выбраться" };
             if (phone) options.Add("Залипнуть в инсте");
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
             Console.Clear();
             switch (options[selectedIndex])
@@ -241,7 +245,7 @@ namespace OBSHAGA
 
             Console.ReadLine();
 
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
 
             Console.Clear();
@@ -337,7 +341,7 @@ namespace OBSHAGA
                 if (Key && !Door806) options.Add("Использовать ключ");
                 options.Add("Закончить поиски");
                 if (Door806) options.Add("Выйти в прихожую");
-                Menu mainMenu = new Menu(prompt, options, health);
+                Menu mainMenu = new Menu(prompt, options, health, sigi);
                 int selectedIndex = mainMenu.Run();
                 Console.Clear();        
                 switch (options[selectedIndex])
@@ -544,7 +548,7 @@ namespace OBSHAGA
         {
             string prompt = "Доступные действия:\n";
             List<string> options = new List<string>() { "Обыскать карманы", "Не беспокоить" };
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
 
             switch (selectedIndex)
@@ -606,7 +610,7 @@ namespace OBSHAGA
                 if (Ivan) options.Add("Спросить про пропуск");
                 if (Vodka) options.Add("Предложить водку");
 
-                Menu mainMenu = new Menu(prompt, options, health);
+                Menu mainMenu = new Menu(prompt, options, health, sigi);
 
                 Console.Clear();
 
@@ -687,7 +691,7 @@ namespace OBSHAGA
                                                         "Пойти по лестнице",
                                                         "Постучать в дверь коменде и убежать",
                                                         "Вернуться в 806 блок" };
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
             switch (selectedIndex)
             {
@@ -742,7 +746,7 @@ namespace OBSHAGA
                                                             "Отобрать чужую еду",
                                                             "Купить еду",
                                                             "Выйти в коридор" };
-                Menu mainMenu = new Menu(prompt, options, health);
+                Menu mainMenu = new Menu(prompt, options, health, sigi);
                 int selectedIndex = mainMenu.Run();
                 switch (options[selectedIndex])
                 {
@@ -829,7 +833,7 @@ namespace OBSHAGA
                                                             "Со скинхедом у входа",
                                                             "С ботаном за столом",
                                                             "Не общаться ни с кем" };
-                Menu mainMenu = new Menu(prompt, options, health);
+                Menu mainMenu = new Menu(prompt, options, health, sigi);
                 int selectedIndex = mainMenu.Run();
                 Console.Clear();
                 switch (options[selectedIndex])
@@ -921,7 +925,7 @@ namespace OBSHAGA
                                                             "На столах",
                                                             "Возле окна",
                                                             "Закончить поиски" };
-                Menu mainMenu = new Menu(prompt, options, health);
+                Menu mainMenu = new Menu(prompt, options, health, sigi);
                 int selectedIndex = mainMenu.Run();
 
                 switch (options[selectedIndex])
@@ -1009,7 +1013,7 @@ namespace OBSHAGA
             string prompt = "Доступные действия:\n";
             List<string> options = new List<string>() { "Забрать голубцы",
                                                         "Не трогать" };
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
 
             switch (selectedIndex)
@@ -1069,7 +1073,7 @@ namespace OBSHAGA
                 options.Add("Сделать отвлекающий маневр");
             }
 
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
 
             switch (options[selectedIndex])
@@ -1167,7 +1171,7 @@ namespace OBSHAGA
                 options.Add("Подняться на 8 этаж");
                 options.Add("Подняться на 9 этаж");
             }
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
 
             switch (options[selectedIndex])
@@ -1210,7 +1214,7 @@ namespace OBSHAGA
             List<string> options = new List<string>() { "Спрятаться за стеной",
                                                         "Побежать на лестницу",
                                                         "Забежать в 806 блок" };
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
             Console.Clear();
             switch (selectedIndex)
@@ -1280,7 +1284,7 @@ namespace OBSHAGA
                                                         "Выйти на балкон",
                                                         "Пойти на лестницу",
                                                         "Вызвать лифт" };
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
             Console.Clear();
             switch (selectedIndex)
@@ -1335,7 +1339,7 @@ namespace OBSHAGA
                 if (sigiGoshi == 2) options.Add("Забрать сигареты Гоши");
                 if (!drunk) options.Add("Выпить чачу");
 
-                Menu mainMenu = new Menu(prompt, options, health);
+                Menu mainMenu = new Menu(prompt, options, health, sigi);
                 int selectedIndex = mainMenu.Run();
                 Console.Clear();
                 switch (options[selectedIndex])
@@ -1395,7 +1399,7 @@ namespace OBSHAGA
                                                             "Предложить покурить" };
                 if (girlQ || att > 0) options.Add("Узнать о девушке из 806");
                 options.Add("Выйти в коридор");
-                Menu mainMenu = new Menu(prompt, options, health);
+                Menu mainMenu = new Menu(prompt, options, health, sigi);
                 int selectedIndex = mainMenu.Run();
                 Console.Clear();
                 switch (options[selectedIndex])
@@ -1548,7 +1552,7 @@ namespace OBSHAGA
                 "Вернуть сигареты",
                 "Оставить себе"
             };
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
 
             switch (selectedIndex)
@@ -1618,7 +1622,7 @@ namespace OBSHAGA
                                                             "Выйти в коридор" };
                 if (sigi > 0) options.Add("Закурить");
                 if (drunk) options.Add("Сесть на край балкона");
-                Menu mainMenu = new Menu(prompt, options, health);
+                Menu mainMenu = new Menu(prompt, options, health, sigi);
                 int selectedIndex = mainMenu.Run();
                 Console.Clear();
                 switch (options[selectedIndex])
@@ -1668,7 +1672,7 @@ namespace OBSHAGA
                 string prompt = "Доступные действия:\n";
                 List<string> options = new List<string>() { "Угостить",
                                                             "Отказать"};
-                Menu mainMenu = new Menu(prompt, options, health);
+                Menu mainMenu = new Menu(prompt, options, health, sigi);
                 int selectedIndex = mainMenu.Run();
                 Console.Clear();
                 switch (selectedIndex)
@@ -1736,7 +1740,7 @@ namespace OBSHAGA
             string prompt = "Доступные действия:\n";
             List<string> options = new List<string>() { "Пойти с поваром",
                                                         "Отказаться"};
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
             Console.Clear();
             switch (selectedIndex)
@@ -1797,7 +1801,7 @@ namespace OBSHAGA
             List<string> options = new List<string>() { "Обыскать комнату",
                                                         "Проверить телефон",
                                                         "Позвать на помощь"};
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
             Console.Clear();
             switch (selectedIndex)
@@ -1836,7 +1840,7 @@ namespace OBSHAGA
             List<string> options = new List<string>() { "Разбить стекло",
                                                         "Открыть дверь силой",
                                                         "Продолжить поиски"};
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
             Console.Clear();
             switch (selectedIndex)
@@ -2059,7 +2063,7 @@ namespace OBSHAGA
                     "Восьмой этаж"
                 };
             }
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
 
             switch (options[selectedIndex])
@@ -2100,7 +2104,7 @@ namespace OBSHAGA
                                                         "Обмануть охрану",
                                                         "Перепрыгнуть турникеты"};
             if (keycard) options.Add("Использовать пропуск");
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
             Console.Clear();
             switch (options[selectedIndex])
@@ -2203,7 +2207,7 @@ namespace OBSHAGA
                                                         "Импровизировать",
                                                         "Нагрубить"};
             if (keycard) options.Add("Использовать пропуск");
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
             Console.Clear();
             switch (selectedIndex)
@@ -2250,7 +2254,7 @@ namespace OBSHAGA
                                                         "Я с 9 этажа, заходил на кухню, наша закрыта",
                                                         "Я студент первого курса, недавно заехал в 806 блок"};
             if (keycard) options.Add("Использовать пропуск");
-            Menu mainMenu = new Menu(prompt, options, health);
+            Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
             Console.Clear();
             switch (selectedIndex)
@@ -2305,7 +2309,7 @@ namespace OBSHAGA
                                                             "Приходил забрать конспекты",
                                                             "Нагрубить"};
                 if (keycard) options.Add("Использовать пропуск");
-                Menu mainMenu = new Menu(prompt, options, health);
+                Menu mainMenu = new Menu(prompt, options, health, sigi);
                 int selectedIndex = mainMenu.Run();
                 Console.Clear();
                 switch (selectedIndex)
@@ -2604,7 +2608,7 @@ namespace OBSHAGA
 Beta v3.0
 ";
             List<string> options = new List<string>() { "Новая игра", "Управление", "Создатели", "Выход" };
-            Menu mainMenu = new Menu(prompt, options, 101);
+            Menu mainMenu = new Menu(prompt, options, 101, 101);
             int selectedIndex = mainMenu.Run();
 
             switch (selectedIndex)
