@@ -23,7 +23,7 @@ namespace OBSHAGA
                 "Выйти из игры"
             };
 
-            Menu mainMenu = new Menu(prompt, options, 101);
+            Menu mainMenu = new Menu(prompt, options, 101, 101);
             int selectedIndex = mainMenu.Run();
 
             do

@@ -15,8 +15,8 @@ namespace OBSHAGA
         {
             code = Codename();                                  // Кодовое слово для входа к Алексею
             girlName = GirlNames();                             // Имя девушки
+            codeCut = code.Substring(3);
         }
-
         bool phone = true;
         bool phoneNumber = false;                               // Оставить девушке номер телефона
         bool sosed = true;
@@ -39,6 +39,7 @@ namespace OBSHAGA
         bool xpysteam = true;
         bool girlQ = true;                                      // Вопрос о девушке у Гоши
         string code = null;                                     // Кодовое слово для входа к Алексею
+        string codeCut = null;
         string girlName = null;                                 // Имя девушки
         int health = 80;                                        // Текущее здоровье
         int attempt = 2;                                        // Кол-во попыток, чтобы угадать код Алексея
@@ -78,9 +79,6 @@ namespace OBSHAGA
             PrintText("Именно поэтому, нужно покинуть общежитие как можно быстрее и не попасться администрации.");
             PrintText("Твои размышления прерывает какой-то потрепанный парень своими яростными криками с соседней кровати.");
             PrintText("Оторвавшись от размышлений ты слышишь, что он в грубой форме требует выключить будильник!");
-            	
-            Console.WriteLine("Здоровье: {0, 10} | Сигарет: {1, 5} | Код: {2}", health.ToString(), sigi, code);
-
 
             Console.ReadLine();
             AlarmClock();
@@ -112,12 +110,12 @@ namespace OBSHAGA
                     break;
 
                 case 1:
-                    PrintText("Не выдержав шума будильника, сосед вскакивает с кровати, выхватывает телефон из твоих рук и бросает его в сторону окна.");
+                    PrintText("\nНе выдержав шума будильника, сосед вскакивает с кровати, выхватывает телефон из твоих рук и бросает его в сторону окна.");
                     PrintText("С невероятной точностью, телефон отправляется прямо в открую форточку... Его уже не спасти");
                     Console.ReadLine();
                     PrintText("Нахлынувшая ярость позволяет тебе вырубить соседа с одного не менее точного удара по голове.");
                     PrintText("После удара ты чувствуешь боль в кулаке.");
-                    health = СalculationHealth(health, 10, true);
+                    health = СalculationHealth(health, 20, true);
                     if (health == 0) break;
                     phone = false;
                     sigi++;
@@ -139,7 +137,7 @@ namespace OBSHAGA
                     break;
 
                 case 2:
-                    PrintText("Ты озадаченно смотришь то на него, то на будильник, то на комнату.");
+                    PrintText("\nТы озадаченно смотришь то на него, то на будильник, то на комнату.");
                     PrintText("Не выдержав шума будильника, сосед вскакивает с кровати и выхватывает телефон из твоих рук.");
                     Console.ReadLine();
                     PrintText("Отключив будильник, он дерзко бросает телефон обратно со словами:");
@@ -169,7 +167,9 @@ namespace OBSHAGA
         void Bed()                                          //Активность в кровати 
         {
             string prompt = "Доступные действия:\n";
-            List<string> options = new List<string>() { "Обнять девушку и продолжить спать", "Одеться и найти способ выбраться" };
+            List<string> options = new List<string>() { "Обнять девушку и продолжить спать", 
+                                                        "Одеться и найти способ выбраться",
+                                                        "Начать приставать к девушке" };
             if (phone) options.Add("Залипнуть в инсте");
             Menu mainMenu = new Menu(prompt, options, health, sigi);
             int selectedIndex = mainMenu.Run();
@@ -178,7 +178,7 @@ namespace OBSHAGA
             {
                 case "Обнять девушку и продолжить спать":
                     Console.Clear();
-                    PrintText("Ты засыпаешь рядом с прекрасной дамой.");
+                    PrintText("\nТы засыпаешь рядом с прекрасной дамой.");
                     Console.ReadLine();
                     PrintText("Некоторое время спустя ты подскакиваешь от громких стуков в дверь и криков.");
                     PrintText("Открыв глаза, ты обнаруживаешь вламывающуюся коменду с двумя крупкими охранниками.");
@@ -190,27 +190,95 @@ namespace OBSHAGA
 
                 case "Одеться и найти способ выбраться":
                     Console.Clear();
-                    PrintText("Ты неохотно встаешь с кровати и медленно натягиваешь разбросанную по комнате одежду.");
+                    PrintText("\nТы неохотно встаешь с кровати и медленно натягиваешь разбросанную по комнате одежду.");
                     PrintText("Очень тяжело покидать теплую кровать, но тебе нужно выбраться из общежития и не попасться в лапы коменданта.");
                     Console.ReadLine();
                     Room806();
                     break;
 
                 case "Залипнуть в инсте":
-                    PrintText("Ты начинаешь смотреть смешные видосики из ленты.");
+                    PrintText("\nТы начинаешь смотреть смешные видосики из ленты.");
                     PrintText("Ого, оказывается ребята вчера записывали сторис!");
                     health = СalculationHealth(health, 5, false);
                     PrintText("Проснувшись от громких звуков, девушка что-то бубнит себе под нос.");
                     PrintText("После чего отворачивается и накрывает голову подушкой.");
                     Console.ReadLine();
+                    PrintText("Ты неохотно встаешь с кровати и медленно натягиваешь разбросанную по комнате одежду.");
+                    PrintText("Очень тяжело покидать теплую кровать, но тебе нужно выбраться из общежития и не попасться в лапы коменданта.");
+                    Console.ReadLine();
                     options.Remove("Залипнуть в инсте");
                     Room806();
+                    break;
+                    
+                case "Начать приставать к девушке":
+                    PrintText("\nТвоя рука под одеялом совершает сближение с грудью девушки.");
+                    PrintText("Соприкосновение... Вроде бы она ничего не заметила!");
+                    Console.ReadLine();
+                    PrintText("После такого ты чувствуешь себя лучше!");
+                    health = СalculationHealth(health, 5, false);
+                    Boobs();
                     break;
             }
         }
 
+        void Boobs()
+        { 
+            while (RoomNumber == 1)
+            { 
+                string prompt = "Доступные действия:\n";
+                List<string> options = new List<string>() { "Продолжить", 
+                                                            "Закончить" };
+                Menu mainMenu = new Menu(prompt, options, health, sigi);
+                int selectedIndex = mainMenu.Run();
+                Console.Clear();
+                switch (selectedIndex)
+                {
+                    case 0:
+                        Random rnd = new Random();
+                        int value = rnd.Next(3);
+                        PrintText("\nТы продолжаешь мять грудь девушки.");
+                        if (value == 0 || value == 1 && health != 100)
+                        {
+                            PrintText("Она все еще не реагирует.");
+                            health = СalculationHealth(health, 5, false);
+                        }
+                        else
+                        {
+                            PrintText("Увлекшись, ты слишком сильно сжимаешь ее упругую прелесть!");
+                            Console.ReadLine();
+                            PrintText("Проснувшаяся девушка, поняв что происходит, начинает ругаться сонным голосом:");
+                            PrintText("- Ты совсем ахуел? Руку убери! Мы не одни в комнате!");
+                            Console.ReadLine();
+                            PrintText("Дав заслуженную пощечину, она отворачивается и накрывает голову подушкой.");
+                            health = СalculationHealth(health, 5, true);
+                            if (health == 0) break;
+                            PrintText("Больно. Но оно того стоило! Да и сон как рукой сняло!");
+                            Console.ReadLine();
+                            PrintText("Ты неохотно встаешь с кровати и медленно натягиваешь разбросанную по комнате одежду.");
+                            PrintText("Очень тяжело покидать теплую кровать, но тебе нужно выбраться из общежития и не попасться в лапы коменданта.");
+                            Console.ReadLine();
+                            break;
+                        }
+                        continue;
+                        
+
+                    case 1:
+                        PrintText("\nТы аккуратно убираешь руку.");
+                        PrintText("Настроение просто прекрасное! Сон как рукой сняло.");
+                        Console.ReadLine();
+                        PrintText("Встав с кровати, ты резво натягиваешь разбросанную по комнате одежду.");
+                        PrintText("Настало время приключений!");
+                        Console.ReadLine();
+                        break;
+                }
+                break;
+            }                     
+            Room806();
+        }
+
         void Room806()                                      //Действия в 806 комнате
         {
+            Console.Clear();
             RoomNumber = 1;
             string prompt = "Доступные действия:\n";
             List<string> options = new List<string>() { "Обыскать комнату", "Вернуться в кровать" };
@@ -225,14 +293,15 @@ namespace OBSHAGA
                 else
                 {
                     PrintText("Девушка продолжает крепко спать. Сосед без сознания.");
-                    PrintText("Ты подходишь к двери и дергаешь за ручку. Заперто на ключ.");
+                    PrintText("Ты подходишь к двери и дергаешь за ручку.");
+                    PrintText("Заперто на ключ.");
                 }
                 options.Add("Попробовать силой открыть дверь");
             }
             else if (Key && !Door806)
             {
-                PrintText("Дверь в прихожую заперта.");
-                PrintText("Ты подходишь к двери и дергаешь за ручку. Заперто на ключ.");
+                PrintText("Ты подходишь к двери в прихожую и дергаешь за ручку.");
+                PrintText("Заперто на ключ.");
                 options.Add("Использовать ключ");
             }
             else if (Door806)
@@ -405,36 +474,32 @@ namespace OBSHAGA
 
                         else if (Door806 && !Sam)
                         {
+                            Sam = true;
                             PrintText("\nТы отодвигаешь щеколду шкафа и медленно открываешь скрипучую дверцу...");
                             Console.ReadLine();
                             PrintText("Дверца стремительно распахивается и больно бьет тебя по голове.");
                             health = СalculationHealth(health, 20, true);
                             if (health == 0) break;
-
                             PrintText("Из шкафа выскакивает темнокожий парень, он покидает комнату, параллельно матерясь на английском.");
-
                             Console.ReadLine();
-                            PrintText("Рядом со шкафом лежит визитка с надписью '" + code + "'");
-                            PrintText("Интересно, что бы это могло значить? Ты, потирая ушиб, кладешь визитку в карман.");
+                            PrintText("Рядом со шкафом лежит визитка. Часть текста стерта: '..." + codeCut.Substring(0, codeCut.Length - 2) + "...'");
+                            PrintText("Интересно, что бы это могло значить? Ты, потирая ушиб, кладешь визитку обратно.");
                             Console.ReadLine();
 
-                            Sam = true;
                         }
 
                         else if (Door806 && Sam && !shkaf)
                         {
+                            sigi++;
+                            shkaf = true;
                             PrintText("\nТы решаешь повторно проверить содержимое шкафа.");
                             PrintText("Дверца осталась приоткрытой с прошлого инцидента.");
                             Console.ReadLine();
                             PrintText("Внимательно осмотрев содержимое, ты замечаешь сиграету среди прочего хлама.");
-
-                            sigi++;
-                            shkaf = true;
-
-                            PrintText("\nЗабираешь ее себе.\nКоличество сиграет в кармане: " + sigi);
+                            PrintText("Забираешь ее себе.\nКоличество сиграет в кармане: " + sigi);
                             Console.ReadLine();
-                            PrintText("Рядом лежит такая же карточка с надписью '" + code + "'");
-                            PrintText("Кто и зачем распростроняет эти визитки?");
+                            PrintText("Рядом лежит такая же карточка с надписью '..." +  codeCut.Substring(0, codeCut.Length - 2)  + "...'");
+                            PrintText("Что бы это могло значить?");
                             Console.ReadLine();
                         }
                         else if (Door806 && Sam && shkaf)
@@ -443,7 +508,7 @@ namespace OBSHAGA
                             PrintText("Дверца все еще приоткрыта.");
                             Console.ReadLine();
                             PrintText("Проход в Нарнию так и не появился.");
-                            PrintText("Зато, по-прежнему, лежит визитка с надписью '" + code + "'");
+                            PrintText("Зато, по-прежнему, лежит визитка с надписью '..." + codeCut.Substring(0, codeCut.Length - 2) + "...'");
                             Console.ReadLine();
                         }
                         continue;
@@ -665,7 +730,7 @@ namespace OBSHAGA
                         Console.ReadLine();
                         PrintText("Несколько глотков спустя Иван решительно заявляет:");
                         PrintText("- В 913 блоке сейчас откисает Алексей, ты можешь взять мой пропуск у него.");
-                        PrintText("Но он пускает в свою комнату только по кодовому слову – '" + code.Remove(code.Length - 4, 5) + "...'.");
+                        PrintText("Но он пускает в свою комнату только по кодовому слову – '" + code.Remove(6, code.Length - 6) + "...'.");
                         Console.ReadLine();
                         PrintText("Речь Ивана резко прерывает рвотный позыв.");
                         PrintText("Кажется, Иван будет недоступен ближайшее время.");
@@ -986,9 +1051,9 @@ namespace OBSHAGA
 
                     case "Возле окна":
                         PrintText("\nПодойдя к окну на кухне, ты решаешь пошарить рядом.");
-                        PrintText("Под батареей ты находишь бумажку, напоминающую визитку с красивым дизайном.");
+                        PrintText("Под батареей ты находишь потертую бумажку, напоминающую визитку.");
                         Console.ReadLine();
-                        PrintText("Кроме надписи '" + code + "', на ней ничего нет");
+                        PrintText("Часть текста стерлась: '..." + code.Remove(2,5) + "...'");
                         PrintText("Стоит запомнить, это может быть полезно.");
                         Console.ReadLine();
                         continue;
@@ -1648,6 +1713,7 @@ namespace OBSHAGA
                         Corridor9();
                         break;
                 }
+                break;
             }
         }
 
@@ -1714,6 +1780,7 @@ namespace OBSHAGA
             PrintText("Полетев с 9 этажа он задевает ветки деревьев, разлетаясь на сотни ярких искр.");
             Console.ReadLine();
             ActionBalkon();
+            return;
         }
 
         void ActionBalkonDrunk()                             //Балкон >> Сценарий с падением
@@ -1909,7 +1976,7 @@ namespace OBSHAGA
             PrintText("«Где ты? Мне срочно нужно с тобой поговорить!»");
             PrintText("«Я тебе не все о себе рассказала…»");
             Console.ReadLine();
-            PrintText("«Я знаю, что ты еще в общежитии, но не могу понять где именно»");
+            PrintText("«Я знаю, что ты еще в общежитии, но не могу понять где именно.»");
             PrintText("«Слушай, тут небезопасно. Ответь, пожалуйста…»");
             Console.ReadLine();
             PrintText("«Все, я проверяю камеры! Если ты это читаешь, дай знак»");
@@ -2503,7 +2570,9 @@ namespace OBSHAGA
                                       "Ксюша",
                                       "Лера",
                                       "Жанна",
-                                      "Даша"};
+                                      "Даша",
+                                      "Оля",
+                                      "Карина" };
 
             int rndFunction = rnd.Next(codeVariants.Length);
             string girlName = codeVariants[rndFunction];
@@ -2574,7 +2643,7 @@ namespace OBSHAGA
             }
             Console.ResetColor();
 
-            Console.Write(")\nТекущее здоровье:  ");
+            Console.Write(")\nТекущее здоровье: ");
 
             if (сurrentHealth >= 50) Console.ForegroundColor = ConsoleColor.Green;
             else if (сurrentHealth < 50 && сurrentHealth >= 30) Console.ForegroundColor = ConsoleColor.Yellow;
@@ -2607,7 +2676,10 @@ namespace OBSHAGA
 Текстовый квест 
 Beta v3.0
 ";
-            List<string> options = new List<string>() { "Новая игра", "Управление", "Создатели", "Выход" };
+            List<string> options = new List<string>() { "Новая игра", 
+                                                        "Управление", 
+                                                        "Создатели", 
+                                                        "Выход" };
             Menu mainMenu = new Menu(prompt, options, 101, 101);
             int selectedIndex = mainMenu.Run();
 
